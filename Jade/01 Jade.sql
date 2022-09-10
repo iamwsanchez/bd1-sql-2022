@@ -51,6 +51,11 @@ GO
 INSERT INTO HumanResources.Job([Name])
 VALUES('Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
 GO
+
+INSERT INTO HumanResources.Job([Name])
+VALUES('Director de tecnología')
+GO
+
 SELECT * 
 FROM HumanResources.Job
 GO
