@@ -1,0 +1,26 @@
+﻿<Window x:Class="Nash.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Nash"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" FontWeight="Bold" FontSize="16">Nombre</Label>
+        <TextBox Grid.Row="0" Grid.Column="1"  Width="500" FontWeight="Bold" FontSize="16"></TextBox>
+        <Label Grid.Row="1" Grid.Column="0">Apellido</Label>
+        <TextBox Grid.Row="1" Grid.Column="1" Width="500"></TextBox>
+        <Label Grid.Row="2" Grid.Column="0" FontWeight="Bold" FontSize="16">Fecha de nacimiento</Label>
+        <TextBox Grid.Row="2" Grid.Column="1"  Width="500" FontWeight="Bold" FontSize="16"></TextBox>
+    </Grid>
+</Window>
