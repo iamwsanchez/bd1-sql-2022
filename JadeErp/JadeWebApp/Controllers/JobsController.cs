@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using JadeWebApp.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace JadeWebApp.Controllers
 {
+    [Authorize]
     public class JobsController : Controller
     {
         private readonly JadeContext _context;

@@ -110,3 +110,32 @@ VALUES('Alan', 'Mondragón', 5),
 INSERT INTO HumanResources.Employee(FirstName, MiddleName,LastName, JobId)
 VALUES('William', 'José', 'Sánchez', 6),
 		('Douglas', 'Antonio', 'Sánchez', 6)
+GO
+
+CREATE TABLE HumanResources.Log_Job
+(
+	Id INT NOT NULL IDENTITY(1,1),
+	JobId tinyint NOT NULL,
+	[OldName] VARCHAR(100),
+	[OldDescription] VARCHAR(500),
+	OldActive BIT,
+	[NewName] VARCHAR(100),
+	[NewDescription] VARCHAR(500),
+	NewActive BIT,
+	CONSTRAINT PK_Id PRIMARY KEY(Id)
+)
+GO
+
+CREATE TABLE HumanResources.Dummy
+(
+	Id tinyint NOT NULL IDENTITY(1,1),
+	[Name] VARCHAR(100) NOT NULL,
+	[Description] VARCHAR(500),
+	CONSTRAINT PK_Dummy_Id PRIMARY KEY(Id)
+)
+GO
+
+INSERT INTO HumanResources.Dummy([Name])
+VALUES('Valor Dummy 1'), ('Valor Dummy 2'), ('Valor Dummy 3')
+GO
+
