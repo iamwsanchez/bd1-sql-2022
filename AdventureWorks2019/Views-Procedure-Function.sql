@@ -39,6 +39,35 @@ GO
 SELECT * FROM Sales.ufn_SalesByTerritory(NULL)
 GO
 
+IF OBJECT_ID (N'Sales.ufn_SalesByTerritoryWithDefault') IS NOT NULL
+   DROP FUNCTION Sales.ufn_SalesByTerritoryWithDefault
+GO
+CREATE FUNCTION Sales.ufn_SalesByTerritoryWithDefault(@TerritoryID INT = NULL)
+RETURNS @SalesByTerritory TABLE (
+		TerritoryID INT,
+		TerritoryName NVARCHAR(50),
+		SalesTotal DECIMAL(18,2)
+	)
+AS
+BEGIN
+	IF (@TerritoryID IS NULL)
+		SET @TerritoryID = 0;
+
+	INSERT INTO @SalesByTerritory(TerritoryID, TerritoryName, SalesTotal)
+	SELECT t.TerritoryID, t.[Name] AS TerritoryName, SUM(s.TotalDue) as SalesTotal
+	FROM Sales.SalesTerritory t
+	INNER JOIN Sales.Customer c ON t.TerritoryID = c.TerritoryID
+	INNER JOIN Sales.SalesOrderHeader s ON c.CustomerID = s.CustomerID
+	WHERE @TerritoryID IS NULL OR t.TerritoryID = @TerritoryID
+	GROUP BY t.TerritoryID, t.[Name]
+
+	RETURN;
+END
+GO
+---como usarla
+SELECT * FROM Sales.ufn_SalesByTerritoryWithDefault(NULL)
+go
+
 IF EXISTS (
   SELECT * 
     FROM INFORMATION_SCHEMA.ROUTINES 
@@ -81,3 +110,5 @@ DECLARE @msg VARCHAR(500)
 EXEC Sales.usp_SalesByTerritory 2, 2011, @msg output
 select @msg
 GO
+
+
