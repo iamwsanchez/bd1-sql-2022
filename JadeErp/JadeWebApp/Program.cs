@@ -44,6 +44,7 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 app.MapRazorPages();
 
+//Aplica las migraciones cuando se ejecuta la aplicaci�n.
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;

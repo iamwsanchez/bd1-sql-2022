@@ -45,7 +45,7 @@ namespace JadeWebApp.Models
             users[1].PasswordHash = hasher.HashPassword(users[1], "pA$$1234");
 
             //Agregar roles a usuario
-            List<IdentityUserRole<string>> userRoles = new List<IdentityUserRole<string>>();
+            List<IdentityUserRole<string>> userRoles = new();
             userRoles.Add(new IdentityUserRole<string> 
             {
                 UserId = users[0].Id,

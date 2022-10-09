@@ -1,4 +1,10 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
-
-// Write your JavaScript code.
+﻿$(function () {
+    $('.table').DataTable({
+        "pageLength": 5,
+        "lengthMenu": [5, 10, 15, 25, 50],
+        "language": {
+            search: "Buscar: ",
+            lengthMenu: "Mostrar _MENU_ registros"
+        }
+    });
+})
